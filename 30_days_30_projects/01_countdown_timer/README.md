@@ -13,7 +13,7 @@ A simple, interactive, and fully responsive countdown timer built using **React 
 
 ## 🏗️ Project Structure
 
-![Project Structure](folderStructure.png)
+![Project Structure](public/folderStructure.png)
 
 ## ⚙️ How It Works
 
