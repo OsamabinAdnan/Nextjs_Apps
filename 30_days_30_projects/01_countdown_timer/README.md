@@ -13,16 +13,7 @@ A simple, interactive, and fully responsive countdown timer built using **React 
 
 ## 🏗️ Project Structure
 
-📂 countdown-timer
- ┣ 📂 components
- ┃ ┣ 📜 CountDown.tsx  # Countdown Timer Component
- ┃ ┣ 📜 ui/button.tsx  # Button UI Component
- ┃ ┗ 📜 ui/input.tsx   # Input UI Component
- ┣ 📜 app/page.tsx      # Main App Page
- ┣ 📜 tailwind.config.js # Tailwind CSS Config
- ┣ 📜 tsconfig.json      # TypeScript Config
- ┣ 📜 package.json       # Dependencies & Scripts
- ┗ 📜 README.md          # Project Documentation
+![Project Structure](folderStructure.png)
 
 ## ⚙️ How It Works
 
