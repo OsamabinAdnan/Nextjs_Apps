@@ -1,3 +1,16 @@
+# **Day 03: Birthday Wish App**
+Description: A simple birthday wish application.
+
+## Functionalities:
+
+* Celebrate the birthday
+* Display confetti on the screen
+* Light the candles & Pop the balloons
+
+## Check Screen Shot below
+
+![Birthday Wish App](/public/image.png)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
