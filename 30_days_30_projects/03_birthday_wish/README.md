@@ -9,7 +9,7 @@ Description: A simple birthday wish application.
 
 ## Check Screen Shot below
 
-![Birthday Wish App](/public/image.png)
+![Birthday Wish App](public/image.png)
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
