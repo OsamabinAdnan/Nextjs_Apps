@@ -1,63 +1,81 @@
-// Enable client-side functionality
+// Mark this component for client-side rendering in Next.js
 'use client'
 
-// Import necessary React hooks and components
-import { useState, useEffect, ChangeEvent, JSX, KeyboardEvent, useRef } from "react"
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import React from "react"
+// Import required dependencies from React
+import { 
+    useState,     // For managing state
+    useEffect,    // For side effects
+    ChangeEvent,  // Type for input change events
+    JSX,          // Type for JSX elements
+    KeyboardEvent,// Type for keyboard events
+    useRef        // For mutable references
+} from "react"
+// Import UI components from local files
+import { Button } from "./ui/button"  // Custom button component
+import { Input } from "./ui/input"    // Custom input component
+import React from "react"             // Core React import
 
-// Define TypeScript interface for the game's props
-interface NumberGuessingProps {
-    gameStarted: boolean,    // Track if the game has started
-    gameOver: boolean,       // Track if the game has ended
-    paused: boolean,         // Track if the game is paused
-    targetNumber: number,    // The number player needs to guess
-    userGuess: number | string,  // Player's current guess
-    attempts: number         // Number of attempts made
-}
-
-
-
-// Main game component
+// Define the main game component
 export default function NumberGuessing():JSX.Element {
-    // State management using React hooks
-    const [gameStarted, setGameStarted] = useState<boolean>(false)    // Track game start state
-    const [gameOver, setGameOver] = useState<boolean>(false)          // Track game end state
-    const [paused, setPaused] = useState<boolean>(false)              // Track pause state
-    const [targetNumber, setTargetNumber] = useState<number>(0)       // Store the target number
-    const [userGuess, setUserGuess] = useState<number | string>('')   // Store user's current guess
-    const [attempts, setAttempts] = useState<number>(0)               // Count number of attempts
-    const [feedback, setFeedback] = useState<string>('')              // Store feedback messages
-    const [highScore, setHighScore] = useState<number>(0)              // Store and retrieve high score
+    // Initialize all state variables with useState hooks
     
-
-    // Initialize refs to store audio elements for game sound effects
-const correctSoundRef = useRef<HTMLAudioElement | null> (null)
-const wrongSoundRef = useRef<HTMLAudioElement | null> (null)
+    // Track whether the game has started
+    const [gameStarted, setGameStarted] = useState<boolean>(false)
     
-// Effect hook to initialize audio and load high score on component mount
-useEffect(()=> {
-    // Check if code is running in browser environment
-    if(typeof window !== 'undefined') {
-        // Create new Audio objects and assign to refs
-        correctSoundRef.current = new Audio('/correct.mp3')
-        wrongSoundRef.current = new Audio('/wrong.wav')
+    // Track whether the game is over
+    const [gameOver, setGameOver] = useState<boolean>(false)
+    
+    // Track whether the game is paused
+    const [paused, setPaused] = useState<boolean>(false)
+    
+    // Store the number player needs to guess
+    const [targetNumber, setTargetNumber] = useState<number>(0)
+    
+    // Store the player's current guess
+    const [userGuess, setUserGuess] = useState<number | string>('')
+    
+    // Track number of attempts made
+    const [attempts, setAttempts] = useState<number>(0)
+    
+    // Store feedback messages for the player
+    const [feedback, setFeedback] = useState<string>('')
+    
+    // Store the best score (lowest number of attempts)
+    const [highScore, setHighScore] = useState<number>(0)
 
-        // Retrieve high score from localStorage if it exists
-        const storedScore = localStorage.getItem('highScore')
-        if (storedScore){
-            setHighScore(parseInt(storedScore))
+    // Create refs for audio elements
+    // Reference for correct guess sound
+    const correctSoundRef = useRef<HTMLAudioElement | null>(null)
+    // Reference for wrong guess sound
+    const wrongSoundRef = useRef<HTMLAudioElement | null>(null)
+
+    // Initialize audio and load high score when component mounts
+    useEffect(() => {
+        // Ensure code runs only in browser environment
+        if(typeof window !== 'undefined') {
+            // Create and assign audio elements
+            correctSoundRef.current = new Audio('/correct.mp3')
+            wrongSoundRef.current = new Audio('/wrong.wav')
+
+            // Load high score from localStorage
+            const storedScore = localStorage.getItem('highScore')
+            // If a high score exists, set it in state
+            if (storedScore) {
+                setHighScore(parseInt(storedScore))
+            }
         }
-    }
-}, []) // Empty dependency array means this runs once on mount
-    // Generate new target number when game starts or resumes
-    useEffect(()=> {
-        if (gameStarted && !paused){
-            const randomNumber:number = Math.floor(Math.random()* 100) + 1  // Generate number between 1-100
-            setTargetNumber(randomNumber)                                    // Set as target number
+    }, []) // Empty dependency array ensures this runs once on mount
+
+    // Generate new target number when game starts/resumes
+    useEffect(() => {
+        // Only generate number if game is active and not paused
+        if (gameStarted && !paused) {
+            // Generate random number between 1 and 100
+            const randomNumber: number = Math.floor(Math.random() * 100) + 1
+            // Set it as target number
+            setTargetNumber(randomNumber)
         }
-    },[gameStarted, paused])  // Effect depends on game state and pause state
+    }, [gameStarted, paused]) // Re-run when game state or pause state changes
 
     // Initialize new game
     const handleStartGame = ():void => {
