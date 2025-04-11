@@ -68,7 +68,7 @@ export default function Calculator() {
             setResult(result)
             setError('')
         } catch (err) {
-            setError('Calculation error occurred')
+            setError(`Calculation error occurred: ${err}`)
         }
     }
 
@@ -80,7 +80,7 @@ export default function Calculator() {
             setResult(result)
             setError('')
         } catch (err) {
-            setError('Calculation error occurred')
+            setError(`Calculation error occurred: ${err}`)
         }
     }
 
@@ -92,7 +92,7 @@ export default function Calculator() {
             setResult(result)
             setError('')
         } catch (err) {
-            setError('Calculation error occurred')
+            setError(`Calculation error occurred: ${err}`)
         }
     }
 
@@ -109,7 +109,7 @@ export default function Calculator() {
             setResult(result)
             setError('')
         } catch (err) {
-            setError('Calculation error occurred')
+            setError(`Calculation error occurred: ${err}`)
         }
     }
 
