@@ -90,7 +90,7 @@ Open your browser at http://localhost:3000
 
 ### 🌏 Live Demo
 
-**[Digital Clock Demo](https://your-live-demo-link.com)**
+**[Digital Clock Live](https://digital-clock-osamabinadnan.vercel.app/)**
 
 ### 📄 License
 
