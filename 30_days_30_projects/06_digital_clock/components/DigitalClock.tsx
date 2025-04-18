@@ -16,6 +16,7 @@ export default function DigitalClock() {
   const vantaRef = useRef<HTMLDivElement>(null)
 
   // Ref to store the Vanta effect instance for cleanup
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const vantaEffect = useRef<any>(null)
 
   // Vanta.js background effect initialization

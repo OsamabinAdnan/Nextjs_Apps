@@ -44,6 +44,7 @@ declare module 'vanta/src/vanta.globe' {
     // which disables TypeScript's type checking for it. This is a temporary workaround
     // until official types are available or we create our own.
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const VANTA: any
 
     // Export the VANTA constant as the default export of this module,
