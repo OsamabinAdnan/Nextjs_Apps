@@ -14,7 +14,7 @@ A fun and interactive Random Joke Generator built with Next.js and TypeScript. G
 
 ## 🚀 Live Demo
 
-[Live Demo](YOUR_LIVE_DEMO_LINK_HERE) <!-- Add your deployed application link here -->
+[Live Demo](https://random-joke-generator-osamabinadnan.vercel.app/) 
 
 ## 🛠️ Technologies Used
 
