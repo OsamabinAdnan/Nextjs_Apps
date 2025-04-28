@@ -3,7 +3,7 @@
 A sleek and modern color picker built with Next.js, offering real-time color format conversion and an intuitive user interface.
 
 ## Live Demo
-🔗 [View Demo]() <!-- Add your deployment link here -->
+🔗 [View Demo](https://color-picker-app-osamabinadnan.vercel.app/) 
 
 ## Features
 - 🎨 Interactive color selection
@@ -31,8 +31,8 @@ A sleek and modern color picker built with Next.js, offering real-time color for
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/color-picker.git
-cd color-picker
+git clone https://github.com/OsamabinAdnan/Nextjs_Apps/tree/main/30_days_30_projects.git
+cd 08_color_picker
 ```
 
 2. Install dependencies
@@ -97,9 +97,9 @@ The app supports three color formats:
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
-Your Name - [@yourusername](https://twitter.com/yourusername)
+Your Name - [@osamabinadnan](https://www.linkedin.com/in/osama-bin-adnan/)
 
-Project Link: [https://github.com/yourusername/color-picker](https://github.com/yourusername/color-picker)
+Project Link: [https://github.com/OsamabinAdnan/Nextjs_Apps/tree/main/30_days_30_projects/08_color_picker](https://github.com/OsamabinAdnan/Nextjs_Apps/tree/main/30_days_30_projects/08_color_picker)
 
 ---
 
