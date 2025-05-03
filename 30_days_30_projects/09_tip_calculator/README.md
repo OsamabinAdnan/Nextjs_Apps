@@ -2,7 +2,7 @@
 
 A modern, responsive tip calculator built with Next.js, TypeScript, and Framer Motion. This application helps users calculate tips and split bills among multiple people with an elegant user interface.
 
-![Live Demo](https://your-demo-link-here.com) 
+![Live Demo](https://tip-calculator-osamabinadnan.vercel.app/)
 
 ## Features
 
