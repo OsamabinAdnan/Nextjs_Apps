@@ -5,7 +5,7 @@ import ThemeToggle from '@/components/theme-toggle';
 export default function Home() {
   return (
     <>
-        <main className="relative z-10">
+        <main>
           <ThemeToggle/>
           <GeneratePassword />
         </main>

@@ -1,69 +1,93 @@
-"use client"; // Enables client-side rendering for this component
+"use client"; // Enables client-side rendering for this component, necessary for interactive features
 
-// Import necessary hooks from React
+// Import React hooks for state management and event handling
 import { useState, ChangeEvent } from "react";
 
-// Import custom UI components from the UI directory
-import {Card} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { CheckedState } from "@radix-ui/react-checkbox";
-import { Button } from "@/components/ui/button";
-import { ToastContainer, toast } from 'react-toastify';
+// Import UI components from the custom component library
+// These components provide the styled building blocks for the interface
+import {Card} from "@/components/ui/card";                // Container component with styling
+import { Label } from "@/components/ui/label";           // Accessible form labels
+import { Input } from "@/components/ui/input";           // Styled input fields
+import { Checkbox } from "@/components/ui/checkbox";      // Toggle switches for password options
+import { CheckedState } from "@radix-ui/react-checkbox"; // Type for checkbox state
+import { Button } from "@/components/ui/button";         // Interactive buttons
+import { ToastContainer, toast } from 'react-toastify';  // For showing notification messages
 
-
-// Default export of the GeneratePasswordComponent function
+/**
+ * Password Generator Component
+ * Provides an interface for generating secure passwords with customizable options
+ * Features include:
+ * - Adjustable password length
+ * - Character type toggles (uppercase, lowercase, numbers, symbols)
+ * - Copy to clipboard functionality
+ * - Real-time feedback via toast notifications
+ */
 export default function GeneratePassword() {
-  // State hooks for managing password generation options and the generated password
-  const [length, setLength] = useState<number>(16);
-  const [includeUppercase, setIncludeUppercase] = useState<boolean>(true);
-  const [includeLowercase, setIncludeLowercase] = useState<boolean>(true);
-  const [includeNumbers, setIncludeNumbers] = useState<boolean>(true);
-  const [includeSymbols, setIncludeSymbols] = useState<boolean>(true);
-  const [password, setPassword] = useState<string>("");
+  // Initialize state variables with default values
+  // Each state variable controls a different aspect of password generation
+  const [length, setLength] = useState<number>(16);                    // Controls password length
+  const [includeUppercase, setIncludeUppercase] = useState<boolean>(true);  // Toggle for uppercase letters
+  const [includeLowercase, setIncludeLowercase] = useState<boolean>(true);  // Toggle for lowercase letters
+  const [includeNumbers, setIncludeNumbers] = useState<boolean>(true);      // Toggle for numbers
+  const [includeSymbols, setIncludeSymbols] = useState<boolean>(true);     // Toggle for special symbols
+  const [password, setPassword] = useState<string>("");                     // Stores the generated password
 
-  const notify = () => toast("Copied to clipboard!")
-  
 
-  // Handler for updating the length state on input change
+  /**
+   * Handles changes to the password length input
+   * Converts the string value from the input element to a number
+   * @param e - Input change event containing the new value
+   */
   const handleLengthChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setLength(Number(e.target.value));
   };
 
-  // Function to generate a password based on selected options
+  /**
+   * Generates a password based on selected options
+   * Combines character sets based on user preferences and
+   * randomly selects characters to create the password
+   */
   const generatePassword = (): void => {
+    // Define character sets for each type of character
     const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
     const numberChars = "0123456789";
     const symbolChars = "!@#$%^&*()_+[]{}|;:,.<>?";
 
+    // Build the character set based on selected options
     let allChars = "";
     if (includeUppercase) allChars += uppercaseChars;
     if (includeLowercase) allChars += lowercaseChars;
     if (includeNumbers) allChars += numberChars;
     if (includeSymbols) allChars += symbolChars;
 
+    // Validate that at least one character type is selected
     if (allChars === "") {
-        toast.warn("Please select at least one character type."); // Alert if no character types are selected
-      return;
+        toast.warn("Please select at least one character type.");
+        return;
     }
 
+    // Generate the password by randomly selecting characters
     let generatedPassword = "";
     for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * allChars.length);
-      generatedPassword += allChars[randomIndex]; // Generate password character by character
+      generatedPassword += allChars[randomIndex];
     }
-    setPassword(generatedPassword); // Set the generated password state
+    setPassword(generatedPassword);
   };
 
-  // Function to copy the password to the clipboard
+  /**
+   * Copies the generated password to the clipboard
+   * Shows success or error notifications based on the operation result
+   */
   const copyToClipboard = (): void => {
+    // Validate that a password exists to copy
     if (!password || password.trim() === "") {
       toast.warn("Please generate a password first!");
       return;
     }
 
+    // Attempt to copy to clipboard using the Clipboard API
     navigator.clipboard.writeText(password)
       .then(() => {
         toast.success("Password copied to clipboard!");
@@ -74,7 +98,12 @@ export default function GeneratePassword() {
       });
   };
 
-  // Handler for updating the checkbox states
+  /**
+   * Higher-order function that handles checkbox state changes
+   * Returns a function that updates the appropriate state variable
+   * @param setter - State setter function for the relevant option
+   * @returns Function that handles the checkbox change event
+   */
   const handleCheckboxChange =
     (setter: (value: boolean) => void) =>
     (checked: CheckedState): void => {
@@ -83,24 +112,26 @@ export default function GeneratePassword() {
       }
     };
 
-  // JSX return statement rendering the password generator UI
+  // Render the password generator interface
   return (
     <>
+    {/* Toast container for notifications */}
     <ToastContainer position="top-center" autoClose={3000} />
+        {/* Main container with center alignment */}
         <div className="flex flex-col items-center justify-center min-h-screen">
-            {/* Center the password generator card within the screen */}
+            {/* Card component with glassmorphism effect */}
             <Card className="w-full max-w-md p-6 backdrop-blur-xl bg-gradient-to-br from-white/60 to-white/30 dark:from-gray-900/70 dark:to-gray-900/50 border border-white/20 dark:border-gray-700/50 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] dark:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] rounded-xl hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.47)] dark:hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.47)] transition-all duration-300 ring-1 ring-white/10 dark:ring-gray-800/50">
                 <div className="mx-auto max-w-md space-y-6">
-                {/* Header with title and description */}
+                {/* Title and description section */}
                 <div className="space-y-2 text-center">
                     <h1 className="text-3xl font-bold">Password Generator</h1>
                     <p className="text-gray-500 dark:text-gray-400">
                     Create a secure password with just a few clicks.
                     </p>
                 </div>
-                {/* Main content area for password options and input */}
+                {/* Options and controls section */}
                 <div className="space-y-4">
-                    {/* Input for password length */}
+                    {/* Password length input */}
                     <div className="space-y-2">
                     <Label htmlFor="length">Password Length</Label>
                     <Input
@@ -113,9 +144,10 @@ export default function GeneratePassword() {
                         className="w-full"
                     />
                     </div>
-                    {/* Checkboxes for character type inclusion */}
+                    {/* Character type options */}
                     <div className="space-y-2">
                     <Label>Include:</Label>
+                    {/* Uppercase letters checkbox */}
                     <div className="flex items-center space-x-2">
                         <Checkbox
                         id="uppercase"
@@ -124,6 +156,7 @@ export default function GeneratePassword() {
                         />
                         <Label htmlFor="uppercase">Uppercase Letters</Label>
                     </div>
+                    {/* Lowercase letters checkbox */}
                     <div className="flex items-center space-x-2">
                         <Checkbox
                         id="lowercase"
@@ -132,6 +165,7 @@ export default function GeneratePassword() {
                         />
                         <Label htmlFor="lowercase">Lowercase Letters</Label>
                     </div>
+                    {/* Numbers checkbox */}
                     <div className="flex items-center space-x-2">
                         <Checkbox
                         id="numbers"
@@ -140,6 +174,7 @@ export default function GeneratePassword() {
                         />
                         <Label htmlFor="numbers">Numbers</Label>
                     </div>
+                    {/* Symbols checkbox */}
                     <div className="flex items-center space-x-2">
                         <Checkbox
                         id="symbols"
@@ -149,11 +184,11 @@ export default function GeneratePassword() {
                         <Label htmlFor="symbols">Symbols</Label>
                     </div>
                     </div>
-                    {/* Button to generate password */}
+                    {/* Generate password button */}
                     <Button type="button" className="w-full" onClick={generatePassword}>
                     Generate Password
                     </Button>
-                    {/* Display the generated password and button to copy */}
+                    {/* Password output section */}
                     <div className="space-y-2">
                     <Label htmlFor="password">Generated Password</Label>
                     <div className="flex md:flex-row flex-col items-center md:space-x-2 gap-2 ">
@@ -174,6 +209,5 @@ export default function GeneratePassword() {
             </Card>
         </div>
     </>
-    
   );
 }

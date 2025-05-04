@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Modern Password Generator
 
-## Getting Started
+A sleek and secure password generator built with Next.js and TypeScript, featuring a modern glassmorphic UI design and real-time feedback.
 
-First, run the development server:
+![Password Generator](public/screenshot.png)
 
+## ✨ Features
+
+- **Customizable Password Generation**
+  - Adjustable password length (8-32 characters)
+  - Toggle uppercase letters
+  - Toggle lowercase letters
+  - Toggle numbers
+  - Toggle special symbols
+  
+- **Modern UI/UX**
+  - Glassmorphism design with subtle animations
+  - Dark/light theme support
+  - Responsive layout for all devices
+  - Real-time feedback via toast notifications
+  - Clean and intuitive interface
+
+- **Security & Convenience**
+  - Client-side password generation
+  - One-click copy to clipboard
+  - Input validation and error handling
+  - Secure random character selection
+
+## 🚀 Tech Stack
+
+- **Framework:** Next.js 14
+- **Language:** TypeScript
+- **Styling:** 
+  - Tailwind CSS
+  - CSS Variables for theming
+  - Glassmorphism effects
+- **UI Components:**
+  - Radix UI primitives
+  - Custom shadcn/ui components
+- **State Management:** React Hooks
+- **Notifications:** React-Toastify
+- **Development Tools:**
+  - ESLint
+  - PostCSS
+  - TypeScript configuration
+
+## 🛠️ Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/osamabinadnan/password-generator.git
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💻 Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Set Password Length**
+   - Use the number input to set length (8-32 characters)
 
-## Learn More
+2. **Choose Character Types**
+   - Check/uncheck boxes to include:
+     - Uppercase letters (A-Z)
+     - Lowercase letters (a-z)
+     - Numbers (0-9)
+     - Special symbols (!@#$%^&*()_+[]{}|;:,.<>?)
 
-To learn more about Next.js, take a look at the following resources:
+3. **Generate Password**
+   - Click "Generate Password" button
+   - Password will appear in the output field
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Copy Password**
+   - Click "Copy to Clipboard" button
+   - A success notification will appear when copied
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎨 Customization
 
-## Deploy on Vercel
+### Themes
+The application supports both light and dark themes, automatically detecting system preferences. You can toggle between themes using the theme switcher in the top-right corner.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Styling
+The UI is built with Tailwind CSS and custom CSS variables, making it easy to modify:
+- Colors
+- Shadows
+- Border radius
+- Animations
+- Spacing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/AmazingFeature`
+3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
+4. Push to the branch: `git push origin feature/AmazingFeature`
+5. Open a Pull Request
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🙏 Acknowledgments
+
+- Design inspired by modern glassmorphism trends
+- Built with [Next.js](https://nextjs.org/)
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Icons from [Lucide](https://lucide.dev/)
+
+## 📈 Future Improvements
+
+- Password strength indicator
+- Custom character sets
+- Password history
+- Password strength requirements
+- Save favorite configurations
+- Export/import settings
+- PWA support
