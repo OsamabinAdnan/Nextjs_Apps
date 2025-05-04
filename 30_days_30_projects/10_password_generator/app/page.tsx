@@ -1,9 +1,16 @@
-import PasswordGenerator from "../components/password-generator";
+import GeneratePassword from '@/components/password-generator';
+import ThemeToggle from '@/components/theme-toggle';
+
 
 export default function Home() {
   return (
-   <>
-    <PasswordGenerator/>
-   </>
+    <>
+        <main className="relative z-10">
+          <ThemeToggle/>
+          <GeneratePassword />
+        </main>
+      
+    </>
+
   );
 }
