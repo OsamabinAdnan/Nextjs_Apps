@@ -2,7 +2,7 @@
 
 A modern, responsive Body Mass Index (BMI) calculator built with Next.js, TypeScript, and Tailwind CSS. This application helps users calculate their BMI and determine their weight category with an elegant user interface.
 
-![Live Demo](https://bmi-calculator-osamabinadnan.vercel.app/)
+![BMI Calculator Screen shot](public/image.png)
 
 ## Features
 
@@ -124,7 +124,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Osama Bin Adnan - [@yourlinkedin](https://linkedin.com/in/osamabinadnan)
 
-Project Link: [https://github.com/osamabinadnan/bmi-calculator](https://github.com/osamabinadnan/bmi-calculator)
+Project Link: [https://github.com/OsamabinAdnan/Nextjs_Apps/tree/main/30_days_30_projects/11_bmi_calculator](https://github.com/OsamabinAdnan/Nextjs_Apps/tree/main/30_days_30_projects/11_bmi_calculator)
 
 ---
 
